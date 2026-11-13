@@ -57,6 +57,7 @@ def load_model(gender='neutral', use_cuda=True, model_type='smpl', skel_type='bo
     elif model_type == 'manol' or model_type == 'manor':
         lr = {'manol': 'LEFT', 'manor': 'RIGHT'}
         body_model = SMPLlayer(join(model_path, 'smplh/MANO_{}.pkl'.format(lr[model_type])), model_type='mano', gender=gender, device=device,
+            num_pca_comps=6, use_pca=True, use_flat_mean=True,
             regressor_path=join(model_path, 'J_regressor_mano_{}.txt'.format(lr[model_type])))
     else:
         body_model = None
